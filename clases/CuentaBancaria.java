@@ -7,25 +7,25 @@ public class CuentaBancaria {
     private Double saldo;
     private Persona titular;
     private int numeroCuenta;
-    public static ArrayList<CuentaBancaria> listaDeCuentasBancarias = new ArrayList<>();
+    public static ArrayList<CuentaBancaria> listaDeCuentasBancarias = new ArrayList<>(); //Total de cuentas creadas
 
     // Constructor
     public CuentaBancaria(Double saldo, Persona titular) {
         this.saldo = saldo;
         this.titular = titular;
-        this.numeroCuenta = this.nuevoNumeroCuenta();
+        this.numeroCuenta = nuevoNumeroCuenta();
         listaDeCuentasBancarias.add(this);
     }
 
-    //Crear numero de cuenta único
+    //Crear número de cuenta único
    private int nuevoNumeroCuenta() {
     Random rand = new Random();
     int numeroRandom;
     boolean existe;
     do {
-        numeroRandom = rand.nextInt(900000) + 100000; // número aleatorio de 6 dígitos
+        numeroRandom = rand.nextInt(900000) + 100000; //número aleatorio de 6 dígitos
         existe = false;
-        //Evitando que se repita el numero con uno existente
+        //Evitando que se repita el número con una cuenta existente
         for (CuentaBancaria cuenta : listaDeCuentasBancarias) {
             if (cuenta.getNumeroCuenta() == numeroRandom) {
                 existe = true;
@@ -54,11 +54,13 @@ public class CuentaBancaria {
         this.titular = titular;
     }
 
-    // Métodos funcionales
+    // Métodos
     public void depositar(double monto) {
         if (monto > 0) {
             saldo += monto;
-            System.out.println("Monto depositado: $" + monto + " en la cuenta: " + numeroCuenta);
+            System.out.println("Registro de movimiento en cuenta: " + numeroCuenta);
+            System.out.println("Monto depositado: $" + monto);
+            System.out.println("-------------------------------------------");
         } else {
             System.out.println("Depósito inválido.");
         }
@@ -66,7 +68,9 @@ public class CuentaBancaria {
      public void retirar(double monto) {
         if (monto > 0 && monto <= saldo) {
             saldo -= monto;
-            System.out.println("Monto retirado: $" + monto + " en la cuenta " + numeroCuenta);
+            System.out.println("Registro de movimiento en cuenta: " + numeroCuenta);
+            System.out.println("Monto retirado: $" + monto);
+            System.out.println("-------------------------------------------");
         } else {
             System.out.println("Retiro inválido.");
         }
@@ -80,7 +84,7 @@ public class CuentaBancaria {
     }
 
     public static void imprimeInformacionDeTodasLasCuentas() {
-        System.out.println("\n--------- Lista de todas las cuentas ----------");
+        System.out.println("\nLista de todas las cuentas");
         for (CuentaBancaria cuenta : listaDeCuentasBancarias) {
             cuenta.despliegaInformacion();
             System.out.println("-------------------------------------------");
