@@ -17,7 +17,7 @@ public class Aplicacion {
         cuenta1.retirar(200);
 
         cuenta2.depositar(1000);
-        cuenta2.retirar(3500); // retiro mayor que el saldo -> mensaje de error
+        cuenta2.retirar(5500); // retiro mayor que el saldo -> mensaje de error
 
         cuenta3.depositar(250);
         cuenta3.retirar(100);

@@ -73,6 +73,7 @@ public class CuentaBancaria {
             System.out.println("-------------------------------------------");
         } else {
             System.out.println("Retiro inválido.");
+            System.out.println("-------------------------------------------");
         }
     }
 
